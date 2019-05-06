@@ -37,8 +37,7 @@ urlpatterns = [
     ),
     url(
         r'^task$',
-        method_dispatch(GET=views.get_task,
-                        POST=views.create_single_task),
+        method_dispatch(POST=views.create_single_task),
         name='get_create_task'
     ),
     url(
