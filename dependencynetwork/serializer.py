@@ -11,11 +11,10 @@ class DependencyNetworkSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
     dependents = RecursiveField(allow_null=True, allow_empty=True, many=True)
-    dependencies = RecursiveField(allow_null=True, allow_empty=True, many=True)
 
     class Meta:
         model = Task
-        fields = ('id', 'name', 'description', 'dependents', 'dependencies')
+        fields = ('id', 'name', 'description', 'dependents')
 
     def create(self, validated_data):
         if not validated_data.get('dependency_network_id'):

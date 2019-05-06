@@ -26,7 +26,6 @@ def get_dependency_network(request, aircraft_type):
         data = []
         for root_task in root_tasks:
             assign_dependents_recursively(root_task)
-            root_task.dependencies = []
             data.append(root_task)
         serializer = TaskSerializer(data, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
